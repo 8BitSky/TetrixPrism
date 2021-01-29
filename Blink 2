@@ -22,7 +22,6 @@ void BlinkRedLED(){
   delay(1000);              // wait here for 1000ms (1 second)
 }
 
-
 void BlinkGreenLED(){
   prizm.setGreenLED(HIGH);    // turn the Green LED ON
   delay(1000);                // wait here for 1000ms (1 second)
