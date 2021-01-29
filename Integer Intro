@@ -1,0 +1,39 @@
+
+#include <PRIZM.h>      // Include the PRIZM library from Tetrix
+
+PRIZM prizm;            // Instantiate a PRIZM object "prizm" so we can use its functions
+
+void setup() {          // Run this code once
+
+   prizm.PrizmBegin();   // Initialize the PRIZM controller
+
+}
+
+//Declare all variables here
+int counter = 0;                //int is short for Integer: Ex. 1, 2, 3, 4, 5
+
+
+void loop() {                  // Repeat this code in a loop 
+  
+  if (counter%2 == 0){        // Divide counter varibale by 2 and compare remainder to zero
+    BlinkRedLED();            // Blink Red LED if remainder is zero
+  } else {
+    BlinkGreenLED();          // Blink Green LED if remainder is NOT zero
+  }
+
+  counter ++;                  // Increase counter variable by 1
+}
+
+void BlinkRedLED(){
+  prizm.setRedLED(HIGH);    // turn the RED LED ON
+  delay(1000);              // wait here for 1000ms (1 second)
+  prizm.setRedLED(LOW);     // turn the RED LED OFF
+  delay(1000);              // wait here for 1000ms (1 second)
+}
+
+void BlinkGreenLED(){
+  prizm.setGreenLED(HIGH);    // turn the Green LED ON
+  delay(1000);                // wait here for 1000ms (1 second)
+  prizm.setGreenLED(LOW);     // turn the Green LED OFF
+  delay(1000);                // wait here for 1000ms (1 second)
+}
