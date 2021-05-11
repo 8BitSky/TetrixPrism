@@ -1,0 +1,56 @@
+#include <PRIZM.h>   
+PRIZM prizm;         
+
+#define Rack 1
+#define Elbow 1
+#define Claw 2
+
+
+
+void setup() {
+  prizm.setGreenLED(0);
+   prizm.setGreenLED(0);
+  prizm.PrizmBegin();         
+}
+
+void loop() {    
+   prizm.setRedLED(1);
+   prizm.setGreenLED(0);
+   MoveServo(Elbow,0);
+   MoveServo(Claw,0);
+   MoveServo(Claw, 90);
+   MoveServo(Elbow,90); 
+   while(DistanceCheck(4)>5){
+     MoveRack(100);
+   }
+   MoveRack(0);
+   MoveServo(Elbow,0);  
+   MoveServo(Claw,0);
+   MoveServo(Elbow,90);
+   MoveServo(Claw,90); 
+   while(DistanceCheck(3)>5){
+     MoveRack(-100);
+   }
+   MoveRack(0);
+   prizm.setRedLED(0);
+   prizm.setGreenLED(1);
+}
+
+
+void MoveRack(int dir){   
+  if( dir <= 100 && dir >=-100){
+  prizm.setCRServoState(RackServo, dir);
+  delay(100);
+}
+}
+
+int DistanceCheck(int x){
+  distance = prizm.readSonicSensorCM(x);
+  return distance;
+}
+
+void MoveServo(int pivot, int deg){
+  prizm.setServoPosition(pivot, deg);
+  delay(200);
+}
+
