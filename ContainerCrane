@@ -1,3 +1,10 @@
+//Build Overview
+// Two Ultrasonic Sensors (Port 3 and 4, left and right respectively)
+// One Continous Rotation Servo (Port 1) on Rack/Pinion System for left and right rail movement
+// Assumer -100 for CR Servo is Left, 0 is stop, and +100 is right
+// Two Standard Servos (Port 3 and 4, elbow pivot and claw respectively)
+// Assume Standards are calibrated to 0deg for fully open and 90deg for active states
+
 #include <PRIZM.h>   
 PRIZM prizm;         
 
@@ -5,11 +12,9 @@ PRIZM prizm;
 #define Elbow 1
 #define Claw 2
 
-
-
 void setup() {
   prizm.setGreenLED(0);
-   prizm.setGreenLED(0);
+  prizm.setGreenLED(0);
   prizm.PrizmBegin();         
 }
 
